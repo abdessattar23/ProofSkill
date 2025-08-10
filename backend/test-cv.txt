@@ -1,0 +1,21 @@
+John Doe
+Software Engineer
+Email: john.doe@example.com
+Phone: (555) 123-4567
+
+EXPERIENCE:
+- Senior Software Engineer at Tech Corp (2020-2024)
+- Full Stack Developer at StartupInc (2018-2020)
+
+SKILLS:
+- JavaScript, TypeScript, React, Node.js
+- Python, Django, Flask
+- PostgreSQL, MongoDB
+- Docker, Kubernetes, AWS
+
+EDUCATION:
+- Bachelor of Computer Science, University of Technology (2014-2018)
+
+CERTIFICATIONS:
+- AWS Certified Solutions Architect
+- Certified Kubernetes Administrator

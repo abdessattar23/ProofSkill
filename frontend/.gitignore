@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# SvelteKit
+/.svelte-kit
+/build
+.output
+
+# Vite
+dist/
+vite.config.js.timestamp-*
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+logs
+*.log
+
+# Cache
+.eslintcache
+.npm
+.cache
+.parcel-cache
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# Static assets (if dynamically generated)
+/static/uploads/
+/static/temp/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Auto-generated files
+/src/lib/components/ui/
+/src/app.html.backup

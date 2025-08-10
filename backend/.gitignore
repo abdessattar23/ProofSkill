@@ -1,0 +1,82 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+.output/
+lib/
+
+# TypeScript
+*.tsbuildinfo
+.tscache/
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Cache
+.eslintcache
+.npm
+.cache
+
+# API keys and secrets (backup protection)
+**/secrets/**
+**/keys/**
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Uploads and user content
+uploads/
+storage/
+temp/
+tmp/
+
+# PM2
+.pm2
+
+# Docker
+.dockerignore
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

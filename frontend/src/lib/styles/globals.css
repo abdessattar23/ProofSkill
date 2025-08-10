@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Professional SaaS Dark Theme */
+    --background: 224 15% 8%;
+    --surface: 224 15% 11%;
+    --surface-elevated: 224 15% 14%;
+    --foreground: 210 10% 95%;
+    --muted: 224 10% 25%;
+    --muted-foreground: 224 8% 60%;
+    --border: 224 15% 20%;
+    --input-border: 224 15% 25%;
+    --primary: 210 100% 60%;
+    --primary-hover: 210 100% 65%;
+    --primary-foreground: 210 10% 5%;
+    --secondary: 224 15% 18%;
+    --secondary-hover: 224 15% 22%;
+    --accent: 210 50% 55%;
+    --success: 142 70% 45%;
+    --warning: 38 95% 50%;
+    --destructive: 0 70% 55%;
+    --card: 224 15% 11%;
+    --shadow: 224 50% 3%;
+  }
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
+}
+
+/* Professional UI Components */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:pointer-events-none;
+}
+
+.btn-primary {
+  @apply bg-primary text-primary-foreground hover:bg-primary-hover focus:ring-primary/30 shadow-sm;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-foreground hover:bg-secondary-hover border border-border focus:ring-accent/30;
+}
+
+.btn-outline {
+  @apply border border-input-border bg-transparent text-foreground hover:bg-surface focus:ring-accent/30;
+}
+
+.btn-ghost {
+  @apply text-muted-foreground hover:text-foreground hover:bg-surface/50 focus:ring-accent/20;
+}
+
+.btn-sm {
+  @apply px-3 py-1.5 text-xs;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-base;
+}
+
+.input {
+  @apply w-full px-3 py-2.5 text-sm bg-surface border border-input-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all duration-200;
+}
+
+.input-error {
+  @apply border-destructive focus:ring-destructive/30 focus:border-destructive;
+}
+
+.card {
+  @apply bg-card border border-card-border rounded-xl shadow-sm shadow-shadow/10;
+}
+
+.nav-link {
+  @apply text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200;
+}
+
+.nav-link-active {
+  @apply text-foreground;
+}
+
+/* Loading states */
+.loading {
+  @apply animate-pulse;
+}
+
+.spinner {
+  @apply animate-spin rounded-full border-2 border-muted border-t-primary;
+}
+
+/* Focus styles for accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-accent/30 focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Text utilities */
+.text-brand {
+  @apply text-primary font-semibold;
+}
+
+/* Direct color assignments to avoid circular @apply usage */
+.text-success {
+  color: hsl(var(--success));
+}
+
+.text-warning {
+  color: hsl(var(--warning));
+}
+
+.text-error {
+  color: hsl(var(--destructive));
+}
+
+@layer utilities {
+  /* Custom background color for primary hover state */
+  .bg-primary-hover {
+    background-color: hsl(var(--primary-hover));
+  }
+
+  /* Custom background color for secondary hover state */
+  .bg-secondary-hover {
+    background-color: hsl(var(--secondary-hover));
+  }
+
+  /* Custom surface background utility (enables bg-surface & hover:bg-surface) */
+  .bg-surface {
+    background-color: hsl(var(--surface));
+  }
+  .hover\:bg-surface:hover {
+    background-color: hsl(var(--surface));
+  }
+
+  /* Custom border color utility for input borders */
+  .border-input-border {
+    border-color: hsl(var(--input-border));
+  }
+
+  /* Custom border color for cards */
+  .border-card-border {
+    border-color: hsl(var(--border));
+  }
+
+  /* Custom shadow utility using the --shadow color variable */
+  .shadow-shadow\/10 {
+    box-shadow:
+      0 1px 2px 0 hsl(var(--shadow) / 0.1),
+      0 1px 3px 1px hsl(var(--shadow) / 0.1);
+  }
+
+  /* Semi-transparent surface background utilities */
+  .bg-surface\/50 {
+    background-color: hsl(var(--surface) / 0.5);
+  }
+  .hover\:bg-surface\/50:hover {
+    background-color: hsl(var(--surface) / 0.5);
+  }
+}
