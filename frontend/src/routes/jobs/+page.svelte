@@ -56,6 +56,7 @@
           Authorization: `Bearer ${$auth.token}`,
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ application: true }),
       });
 
       if (response.ok) {

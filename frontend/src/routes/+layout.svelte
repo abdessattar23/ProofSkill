@@ -49,6 +49,7 @@
               <a href="/assessment/start" class="nav-link">Assessment</a>
               <a href="/interview/voice" class="nav-link">Interview</a>
               <a href="/jobs" class="nav-link">Jobs</a>
+              <a href="/my-applications" class="nav-link">My Applications</a>
               <a href="/results" class="nav-link">Results</a>
             {:else if $auth.user.role === "business"}
               <a href="/jobs/create" class="nav-link">Post Job</a>

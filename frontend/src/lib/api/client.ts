@@ -35,8 +35,8 @@ class ApiClient {
 
         const defaultHeaders: Record<string, string> = {};
 
-        // Only set Content-Type for non-FormData requests
-        if (!(options.body instanceof FormData)) {
+        // Only set Content-Type for requests with a body (and non-FormData)
+        if (options.body && !(options.body instanceof FormData)) {
             defaultHeaders['Content-Type'] = 'application/json';
         }
 
@@ -49,6 +49,13 @@ class ApiClient {
         }
 
         try {
+            console.log('Making request to:', url);
+            console.log('Request options:', {
+                method: options.method,
+                headers: { ...defaultHeaders, ...options.headers },
+                body: options.body
+            });
+            
             const response = await fetch(url, {
                 ...options,
                 headers: {
@@ -175,7 +182,7 @@ class ApiClient {
         if (params.minSimilarity) queryParams.append('minSimilarity', params.minSimilarity.toString());
 
         const query = queryParams.toString();
-        const endpoint = `/v1/api/jobs/${jobId}/match${query ? `?${query}` : ''}`;
+        const endpoint = `/v1/api/jobs/${jobId}/matches${query ? `?${query}` : ''}`;
 
         return this.makeRequest(endpoint);
     }
@@ -469,8 +476,13 @@ class ApiClient {
     }
 
     async applyToJob(jobId: string): Promise<ApiResponse> {
+        console.log('Applying to job:', jobId);
+        const body = JSON.stringify({ application: true });
+        console.log('Request body:', body);
+        
         return this.makeRequest(`/v1/api/jobs/${jobId}/apply`, {
             method: 'POST',
+            body: body,
         });
     }
 
@@ -480,6 +492,36 @@ class ApiClient {
 
     async getJobCandidates(jobId: string): Promise<ApiResponse> {
         return this.makeRequest(`/v1/api/jobs/${jobId}/candidates`);
+    }
+
+    // Job Applications
+    async getJobApplications(jobId: string, params?: {
+        page?: number;
+        pageSize?: number;
+        status?: string
+    }): Promise<ApiResponse> {
+        const queryString = params ? `?${new URLSearchParams(params as any).toString()}` : '';
+        return this.makeRequest(`/v1/api/jobs/${jobId}/applications${queryString}`);
+    }
+
+    async updateApplicationStatus(
+        jobId: string,
+        applicationId: string,
+        data: { status: string; notes?: string }
+    ): Promise<ApiResponse> {
+        return this.makeRequest(`/v1/api/jobs/${jobId}/applications/${applicationId}`, {
+            method: 'PATCH',
+            body: JSON.stringify(data),
+        });
+    }
+
+    async getMyApplications(params?: {
+        page?: number;
+        pageSize?: number;
+        status?: string;
+    }): Promise<ApiResponse> {
+        const queryString = params ? `?${new URLSearchParams(params as any).toString()}` : '';
+        return this.makeRequest(`/v1/api/my-applications${queryString}`);
     }
 
     // Health & Monitoring
